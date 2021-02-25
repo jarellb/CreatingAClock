@@ -34,9 +34,10 @@ $(document).ready( function() {
 		// Assigns the body element in html/css to the variable "bodyElement"
 		var bodyElement = document.getElementsByTagName("BODY")[0];
 
-		// When the clock hits 9:45 AM on a Tuesday or Thursday, the background color turns red for 1 minute which means it's time for period 4
-		// It then turns back to the default color after 1 minute
-		if ((day == 2 && minutes == 45 && hours == 9 && meridiem == "AM") || (day == 4 && minutes == 45 && hours == 9 && meridiem == "AM")) {
+		// When the clock hits 9:45 AM on a Tuesday or Thursday, the background color turns red until 11:10 AM, which is when period 4 is
+		if ((day == 2 && minutes > 45 && hours == 9 && meridiem == "AM") || (day == 4 && minutes > 45 && hours == 9 && meridiem == "AM")
+			|| (day == 2 && hours == 10 && meridiem == "AM") || (day == 4 && hours == 10 && meridiem == "AM")
+			|| (day == 2 && minutes < 10 && hours == 11 && meridiem == "AM") || (day == 4 && minutes < 10 && hours == 11 && meridiem == "AM")) {
 			bodyElement.style.backgroundColor = "red";
 		} else {
 			bodyElement.style.backgroundColor = "#80d4ea";
